@@ -1,17 +1,6 @@
-# template
-Template repository. Repository name format: &lt;stm[model]|py|desktop>-&lt;project_name>-&lt;layer>  
+# Embedded Avionics
 
-Example:
-- stmf411-engine-hal
-- stm-engine-components
-
-For the README.md file, it should be structured like the following:
-
----
-
-# Project Name
-
-> One-sentence summary describing what your project does or solves.
+> Implementation at the application layer for the avionics.
 
 ---
 
@@ -28,13 +17,16 @@ For the README.md file, it should be structured like the following:
 
 ## About
 
-Explain what the project is, what problem it solves, and any relevant context.
-
-Example:  
-> This project implements the HAL layer of the engine project on the STMF411...
+This repository contains all the code that is specific for both the STM32H747 and Raspberry Pi chip for the avionics at the application layer.  
+The following README sections need to be updated when we will have the information to update them:
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation / Build](#installation--build)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
 
 ---
-
 ## Project Structure
 project-root/  
 │  
