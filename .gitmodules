@@ -1,0 +1,3 @@
+[submodule "stm32f412-hal"]
+	path = stm32f412-hal
+	url = git@github.com:SiriusUdS/stm32f412-hal.git

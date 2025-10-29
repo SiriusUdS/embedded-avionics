@@ -1,0 +1,58 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_C_COMPILER": "arm-none-eabi-gcc",
+        "CMAKE_CXX_COMPILER": "arm-none-eabi-g++",
+        "CMAKE_ASM_COMPILER": "arm-none-eabi-gcc",
+        "CMAKE_OBJCOPY": "arm-none-eabi-objcopy",
+        "CMAKE_SIZE": "arm-none-eabi-size"
+      }
+    },
+    {
+      "name": "avionique",
+      "displayName": "Avionique (STM32F4)",
+      "description": "Configuration pour l'avionique STM32F4",
+      "inherits": "base",
+      "cacheVariables": {
+        "PROJECT_TARGET": "AVIONIQUE",
+        "TARGET_MCU": "STM32F4",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/Avionique.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+
+    {
+      "name": "avionique-release",
+      "displayName": "Avionique - Release",
+      "inherits": "avionique",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "avionique",
+      "configurePreset": "avionique",
+      "displayName": "Build Avionique"
+    },
+    {
+      "name": "avionique-release",
+      "configurePreset": "avionique-release",
+      "displayName": "Build Avionique Release"
+    }
+  ]
+}
