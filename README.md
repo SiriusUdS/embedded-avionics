@@ -90,3 +90,10 @@ QA kind of section with the most common problems and how to fix them
 > The application build fails after the installation
 
 Make sure that the vcpkg modules have been downloaded. Check the `use manifest` option in Visual Studio to see if the modules are downloaded automatically or not
+
+## Needed to work
+
+- wsl installation
+- cmake
+- gcc-arm-none-eabi
+- ninja-build
