@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to initialize and update all git submodules
+# Script to initialize and update all git submodules recursively
 # Usage: ./update_submodules.sh
 
 set -e  # Exit on error
@@ -22,16 +22,20 @@ if [ ! -f .gitmodules ]; then
     exit 0
 fi
 
-echo "Initializing submodules..."
-git submodule init
+echo "Syncing submodule URLs (in case they changed)..."
+git submodule sync --recursive
 
 echo ""
-echo "Updating submodules to latest commits..."
+echo "Initializing submodules recursively..."
+git submodule update --init --recursive
+
+echo ""
+echo "Updating submodules to latest commits from remote..."
 git submodule update --recursive --remote
 
 echo ""
-echo "Syncing submodule URLs (in case they changed)..."
-git submodule sync --recursive
+echo "Updating nested submodules..."
+git submodule foreach --recursive 'git submodule update --init --recursive'
 
 echo ""
 echo "================================"
